@@ -1,0 +1,11 @@
+nav {
+    top: 0; 
+    width: 100%;
+    z-index: 100;
+}
+
+.text-large {
+    font-size: 150%;
+    color: white;
+    font-family: cursive;
+  }
