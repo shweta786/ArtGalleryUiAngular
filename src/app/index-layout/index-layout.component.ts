@@ -12,4 +12,8 @@ export class IndexLayoutComponent implements OnInit {
   ngOnInit() {
   }
 
+  public slide1src = "assets/images/Modern-Art-Banner.jpg";
+  public slide2src = "assets/images/Fall Festival Email Header.png";
+  public slide3src = "assets/images/banner1.jpg";
+
 }
