@@ -1,5 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <!-- Navbar content -->
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand text-large" href="/">
     <img src="assets/images/logo2.jpg" height="45" alt="Art Gallery"> Spread The Art
   </a>
@@ -41,6 +40,60 @@
 
   </ul>
 
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+    <a class="navbar-brand text-large" href="/">
+      <img src="assets/images/logo2.jpg" height="45" alt="Art Gallery"> Spread The Art
+    </a>
+
+    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggler" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+  <!-- Collection of nav links and other content for toggling -->
+  <div id="navbarCollapse" class="collapse navbar-collapse">
+
+    <ul class="nav navbar-nav ml-auto">
+
+      <li>
+        <a class="nav-link" style="color:white" href="/">Select By Artist</a>
+      </li>
+
+      <li class="dropdown">
+        <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false" style="color:white">
+          Select By Category
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item menu-color" href="/">Nature</a>
+          <a class="dropdown-item menu-color" href="/">Spiritual</a>
+          <a class="dropdown-item menu-color" href="/">Vehicle</a>
+          <a class="dropdown-item menu-color" href="/">Animal</a>
+          <a class="dropdown-item menu-color" href="/">Sports</a>
+          <a class="dropdown-item menu-color" href="/">Celebration</a>
+          <a class="dropdown-item menu-color" href="/">Animations</a>
+          <a class="dropdown-item menu-color" href="/">Others</a>
+        </div>
+      </li>
+
+      <li>
+        <button type="button" class="btn btn-info box-shadow" data-toggle="modal" data-target="#Modal1">
+          Sign In
+        </button>
+      </li>
+
+      <li style="padding-left:20px">
+        <button type="button" class="btn btn-info box-shadow" data-toggle="modal" data-target="#Modal2">
+          SignUp
+        </button>
+      </li>
+
+    </ul>
+
+  </div>
+
 </nav>
 
 <!-- Modal1 -->
@@ -66,21 +119,21 @@
 
 <!-- Modal2 -->
 <div class="modal" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="ModalLabel">Register to Art Gallery</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Submit</button>
-          <button type="button" class="btn btn-secondary">Already User? SignIn</button>
-        </div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">Register to Art Gallery</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary">Already User? SignIn</button>
       </div>
     </div>
   </div>
+</div>
