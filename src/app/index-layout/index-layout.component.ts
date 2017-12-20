@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarComponent } from '../navbar/navbar.component'
 
 @Component({
   selector: 'app-index-layout',
   templateUrl: './index-layout.component.html',
-  styleUrls: ['./index-layout.component.css']
+  styleUrls: ['./index-layout.component.css', '../navbar/navbar.component.css']
 })
 export class IndexLayoutComponent implements OnInit {
 

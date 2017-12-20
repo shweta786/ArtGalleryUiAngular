@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { paintingService } from './painting.service';
 
 @Component({
   selector: 'app-root',

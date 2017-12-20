@@ -1,0 +1,12 @@
+.card {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.shadow-effect {
+    box-shadow: 0 0 8px;
+}
