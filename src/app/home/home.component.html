@@ -1,0 +1,25 @@
+<app-add-carousel [slide1src]="slide1src" [slide2src]="slide2src" [slide3src]="slide3src"></app-add-carousel>
+<br>
+
+<div class="row mx-auto" style="width: 255px;">
+    <div class="col">
+        <h4>Paintings</h4>
+    </div>
+
+    <div class="col dropdown">
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Sort By
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item menu-color" href="#">Price</a>
+            <a class="dropdown-item menu-color" href="#">Popularity</a>
+            <a class="dropdown-item menu-color" href="#">Time</a>
+            <a class="dropdown-item menu-color" href="#">Size</a>
+        </div>
+    </div>
+</div>
+
+<br>
+<app-show-card></app-show-card>
+

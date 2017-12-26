@@ -8,7 +8,9 @@ import { AddCarouselComponent } from './add-carousel/add-carousel.component';
 import { paintingService } from './painting.service';
 import { ShowCardComponent } from './show-card/show-card.component';
 import { HttpModule } from '@angular/http';
-import { ToArray } from './toArrayConversion.pipe'
+import { ToArray } from './toArrayConversion.pipe';
+import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { ToArray } from './toArrayConversion.pipe'
     IndexLayoutComponent,
     AddCarouselComponent,
     ShowCardComponent,
-    ToArray
+    HomeComponent,
+    ToArray,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
   ],
   providers: [paintingService],
   bootstrap: [AppComponent]
