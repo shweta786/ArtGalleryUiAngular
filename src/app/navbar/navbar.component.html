@@ -1,12 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 
-    <a class="navbar-brand text-large" href="/">
-      <img src="assets/images/logo2.jpg" height="40" alt="Art Gallery"> Spread The Art
-    </a>
+  <a class="navbar-brand text-large" href="/">
+    <img src="assets/images/logo2.jpg" height="40" alt="Art Gallery"> Spread The Art
+  </a>
 
-    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggler" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggler" aria-controls="navbarCollapse"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
   <!-- Collection of nav items for toggling -->
   <div id="navbarCollapse" class="collapse navbar-collapse">
@@ -34,7 +35,7 @@
         </div>
       </li>
 
-      <li class="nav-item button-group">
+      <li *ngIf="result.status =='invalid'" class="nav-item button-group">
         <button type="button" class="btn btn-info box-shadow" data-toggle="modal" data-target="#Modal1">
           Sign In
         </button>
@@ -42,6 +43,14 @@
           SignUp
         </button>
       </li>
+      
+      <!-- <ng-template #content>
+        <li class="nav-item button-group">
+          <button type="button" class="btn btn-info box-shadow">
+            LogOut
+          </button>
+        </li>
+      </ng-template> -->
 
     </ul>
 
@@ -65,10 +74,12 @@
         </div>
         <br>
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Password" aria-label="password">
+          <input type="text" class="form-control" placeholder="Password" aria-label="password">
         </div>
         <br>
-        <a href="/"><u>Forgot Password?</u></a>
+        <a href="/">
+          <u>Forgot Password?</u>
+        </a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">LogIn</button>
@@ -88,6 +99,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+
       <div class="modal-body">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Full Name(max 200 characters)" aria-label="name">
@@ -96,8 +108,22 @@
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Email id" aria-label="email">
         </div>
+        <br>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Phone(optional)" aria-label="contact">
+        </div>
+        <br>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Password" aria-label="password">
+        </div>
       </div>
+
       <div class="modal-footer">
+        <label class="custom-control custom-checkbox mr-auto">
+          <input type="checkbox" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Are You an Artist?</span>
+        </label>
         <button type="button" class="btn btn-primary">Submit</button>
         <button type="button" class="btn btn-secondary">Already User? SignIn</button>
       </div>

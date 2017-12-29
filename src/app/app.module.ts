@@ -11,6 +11,7 @@ import { HttpModule } from '@angular/http';
 import { ToArray } from './toArrayConversion.pipe';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
+import { AuthSessiomService } from './auth-sessiom.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     HttpModule,
   ],
-  providers: [paintingService],
+  providers: [paintingService, AuthSessiomService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

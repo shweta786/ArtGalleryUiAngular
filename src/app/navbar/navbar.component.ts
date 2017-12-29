@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthSessiomService } from '../auth-sessiom.service';
+import { JsonResponse } from '../JsonResponse';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authSessiomService: AuthSessiomService) { }
 
+  result: JsonResponse[];
   ngOnInit() {
+    this.authSessiomService.getSession().subscribe(
+      result => this.result = result,
+      error => console.log("Error :: " + error)
+    )
   }
 
 }
