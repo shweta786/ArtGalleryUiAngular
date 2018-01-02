@@ -35,22 +35,27 @@
         </div>
       </li>
 
-      <li *ngIf="result.status =='invalid'" class="nav-item button-group">
-        <button type="button" class="btn btn-info box-shadow" data-toggle="modal" data-target="#Modal1">
-          Sign In
-        </button>
-        <button type="button" class="btn btn-info box-shadow" data-toggle="modal" data-target="#Modal2">
-          SignUp
-        </button>
-      </li>
-      
-      <!-- <ng-template #content>
+      <div *ngIf="result?.status === 'invalid';then content else other_content">here is ignored</div>
+
+      <ng-template #content>
         <li class="nav-item button-group">
-          <button type="button" class="btn btn-info box-shadow">
+          <button type="button" class="btn btn-info box-shadow" data-toggle="modal" data-target="#Modal1">
+            Sign In
+          </button>
+          <button type="button" class="btn btn-info box-shadow" data-toggle="modal" data-target="#Modal2">
+            SignUp
+          </button>
+        </li>
+      </ng-template>
+
+
+      <ng-template #other_content>
+        <li class="nav-item button-group">
+          <button type="button" (onClick)="logout()" class="btn btn-info box-shadow">
             LogOut
           </button>
         </li>
-      </ng-template> -->
+      </ng-template>
 
     </ul>
 

@@ -16,7 +16,14 @@ export class NavbarComponent implements OnInit {
     this.authSessiomService.getSession().subscribe(
       result => this.result = result,
       error => console.log("Error :: " + error)
-    )
+    );
+  }
+
+  logout() {
+    this.authSessiomService.logOut().subscribe(
+      result => this.result = result,
+      error => console.log("Error :: " + error)
+    );
   }
 
 }
