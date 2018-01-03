@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthSessiomService } from '../auth-sessiom.service';
 import { JsonResponse } from '../JsonResponse';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,7 @@ import { JsonResponse } from '../JsonResponse';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authSessiomService: AuthSessiomService) { }
+  constructor(private authSessiomService: AuthSessiomService, private router: Router) { }
 
   result: JsonResponse[];
   ngOnInit() {
@@ -24,6 +25,7 @@ export class NavbarComponent implements OnInit {
       result => this.result = result,
       error => console.log("Error :: " + error)
     );
+    // this.router.navigate(['/logout']);
   }
 
 }

@@ -12,6 +12,7 @@ import { ToArray } from './toArrayConversion.pipe';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthSessiomService } from './auth-sessiom.service';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AuthSessiomService } from './auth-sessiom.service';
     HomeComponent,
     ToArray,
     FooterComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
