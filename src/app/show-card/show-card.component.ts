@@ -11,14 +11,16 @@ export class ShowCardComponent implements OnInit {
 
   constructor(private paintingService: paintingService) { }
 
-  
-  paintings=[];
-  names=[];
+
+  paintings = [];
+  names = [];
 
   ngOnInit() {
     this.paintingService.getAllPainting().subscribe(
-      result =>{ this.paintings = result['paintings'];
-    this.names= result['names'];},
+      result => {
+      this.paintings = result['paintings'];
+        this.names = result['names'];
+      },
       error => console.log("Error :: " + error)
     )
   }

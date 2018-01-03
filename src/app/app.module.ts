@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthSessiomService } from './auth-sessiom.service';
 import { LogoutComponent } from './logout/logout.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { LogoutComponent } from './logout/logout.component';
     BrowserModule,
     AppRoutingModule,
     HttpModule,
+    ReactiveFormsModule
   ],
   providers: [paintingService, AuthSessiomService],
   bootstrap: [AppComponent]

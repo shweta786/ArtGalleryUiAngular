@@ -67,29 +67,35 @@
 <div class="modal" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">SignIn to Art Gallery</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+
       <div class="modal-body">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Resgistered Email id" aria-label="email">
-        </div>
-        <br>
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Password" aria-label="password">
-        </div>
-        <br>
-        <a href="/">
-          <u>Forgot Password?</u>
-        </a>
+        <form [formGroup]="myform">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" formControlName="email" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" formControlName="password" required>
+          </div>
+          <a href="/">
+            <u>Forgot Password?</u>
+          </a>
+        </form>
       </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-primary">LogIn</button>
         <button type="button" class="btn btn-secondary">New User? SignUp first</button>
       </div>
+
     </div>
   </div>
 </div>
