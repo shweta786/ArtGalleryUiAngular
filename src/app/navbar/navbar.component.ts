@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthSessiomService } from '../auth-sessiom.service';
 import { JsonResponse } from '../JsonResponse';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -12,6 +12,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class NavbarComponent implements OnInit {
 
   myform: FormGroup;
+  email: FormControl;
+  password: FormControl;
 
   constructor(private authSessiomService: AuthSessiomService, private router: Router) { }
 
@@ -22,11 +24,36 @@ export class NavbarComponent implements OnInit {
       error => console.log("Error :: " + error)
     );
 
-    this.myform = new FormGroup({
-      email: new FormControl(),
-      password: new FormControl(),
-    });
+    this.createFormControls();
+    this.createForm();
 
+  }
+
+  // this.myform = new FormGroup({
+  //   email: new FormControl('', [
+  //     Validators.required,
+  //     Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")
+  //   ]),
+  //   password: new FormControl('', [
+  //     Validators.required
+  //   ]),
+  // });
+
+  createFormControls() { 
+    this.email = new FormControl('', [
+      Validators.required,
+      Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")
+    ]);
+    this.password = new FormControl('', [
+      Validators.required
+    ]);
+  }
+
+  createForm() { 
+    this.myform = new FormGroup({
+      email: this.email,
+      password: this.password,
+    });
   }
 
   logout() {
@@ -34,7 +61,14 @@ export class NavbarComponent implements OnInit {
       result => this.result = result,
       error => console.log("Error :: " + error)
     );
-     this.router.navigate(['/logout']);
+    this.router.navigate(['/logout']);
+  }
+
+  onSubmit() {
+    if (this.myform.valid) {
+      console.log("Form Submitted!");
+      this.myform.reset();
+    }
   }
 
 }
