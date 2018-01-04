@@ -27,6 +27,15 @@ export class AuthSessiomService {
     .catch(this.handleError);
   }
 
+  logIn(email: String, password: String): Observable<JsonResponse[]> {
+    // console.log("dwgdiugwdigqwigd---------"+ email + password);
+    return this.http
+    .get('/ArtGallery/api/signin')
+    .map((response: Response) => {
+      return <JsonResponse[]>response.json();
+  })
+    .catch(this.handleError);
+  }
   private handleError(error: Response){
     console.error('An error occurred**', error);
     return Observable.throw(error.statusText);
