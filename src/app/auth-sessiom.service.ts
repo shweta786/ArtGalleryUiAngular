@@ -28,9 +28,13 @@ export class AuthSessiomService {
   }
 
   logIn(email: String, password: String): Observable<JsonResponse[]> {
-    // console.log("dwgdiugwdigqwigd---------"+ email + password);
+    let search = new URLSearchParams();
+    search.set('email', email.toString());
+    search.set('password', password.toString());
+    
+
     return this.http
-    .get('/ArtGallery/api/signin')
+    .get('/ArtGallery/api/signin?email='+ email + '&password='+ password)
     .map((response: Response) => {
       return <JsonResponse[]>response.json();
   })
