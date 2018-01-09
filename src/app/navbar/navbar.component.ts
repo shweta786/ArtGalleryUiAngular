@@ -16,20 +16,28 @@ export class NavbarComponent implements OnInit {
   password: FormControl;
   dialogActive : boolean;
 
+  myform2: FormGroup;
+  name: FormControl;
+  email2: FormControl;
+  password2: FormControl;
+  phone: FormControl;
+  artist: FormControl;
+  dialogActive2 : boolean;
+
   constructor(private authSessiomService: AuthSessiomService, private router: Router) { }
 
   result={
     status:false
   };
   result1: JsonResponse[];
+  result2: JsonResponse[];
 
   ngOnInit() {
-
     this.ifSession();
     this.createFormControls();
     this.createForm();
-
   }
+
 
   ifSession() {
     this.authSessiomService.getSession().subscribe(
@@ -37,21 +45,27 @@ export class NavbarComponent implements OnInit {
       error => console.log("Error :: " + error)
     );
   }
-  showLoginForm(){
-    this.dialogActive= true;
-  }
-  closeLoginForm(){
-    this.dialogActive= false;
-  }
 
   createFormControls() { 
-    this.email = new FormControl('', [
+    this.email = this.email2 = new FormControl('', [
       Validators.required,
       Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}"),
       
     ]);
-    this.password = new FormControl('', [
+
+    this.password = this.password2 = new FormControl('', [
       Validators.required
+    ]);
+
+    this.name =  new FormControl('', [
+      Validators.required,      
+    ]);
+
+    this.phone = new FormControl('', [
+      Validators.pattern("[0-9]{10}"),
+    ]);
+
+    this.artist = new FormControl('', [
     ]);
 
   }
@@ -59,8 +73,31 @@ export class NavbarComponent implements OnInit {
   createForm() { 
     this.myform = new FormGroup({
       email: this.email,
-      password: this.password,
+      password: this.password
     });
+
+    this.myform2 = new FormGroup({
+      name: this.name,      
+      email2: this.email2,
+      phone: this.phone,      
+      password2: this.password2,
+      artist: this.artist,
+    });
+  }
+
+  showLoginForm(){
+    this.dialogActive= true;
+  }
+  closeLoginForm(){
+    this.dialogActive= false;
+    this.myform.reset();
+  }
+  showSignUpForm(){
+    this.dialogActive2= true;
+  }
+  closeSignUpForm(){
+    this.dialogActive2= false;
+    this.myform2.reset();
   }
 
   logout() {
@@ -73,20 +110,25 @@ export class NavbarComponent implements OnInit {
 
   onSubmit() {
     if (this.myform.valid) {
-      console.log("Form Submitted!");
       this.authSessiomService.logIn(this.myform.value.email, this.myform.value.password).subscribe(
-        result1 => {this.result1 = result1
+        result1 => {
+          this.result1 = result1
           this.closeLoginForm();
           this.ifSession();
-          
+          if(this.result1["message"] !== null && this.result1["usr"] === null) {
+            alert(JSON.stringify(this.result1["message"]));
+          } else {
+            alert(JSON.stringify(this.result1["status"]));
+          }
         },
         error => console.log("Error ## " + error)
       );
-      this.myform.reset();
-      // this.ngOnInit();
-      // 
-      // this.router.navigate(['/login']);
     }
+    this.myform.reset();
+  }
+
+  onSubmit2() {
+    console.log("Form Submitted!");
   }
 
 }

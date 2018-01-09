@@ -38,8 +38,7 @@
       <div *ngIf="result?.status === 'invalid' || result?.status === null;then content else other_content">here is ignored</div>
       <ng-template #content>
         <li class="nav-item button-group">
-          <button type="button" class="btn btn-info box-shadow" 
-          data-toggle="modal" (click)="showLoginForm()">
+          <button type="button" class="btn btn-info box-shadow" data-toggle="modal" (click)="showLoginForm()">
             Sign In
           </button>
           <button type="button" class="btn btn-info box-shadow" data-toggle="modal" data-target="#Modal2">
@@ -48,23 +47,30 @@
         </li>
       </ng-template>
 
-      <ng-template #user_content>
-      </ng-template>
+      <ng-template #other_content>
+        <li class="nav-item button-group">
+          <button type="button" class="btn btn-info box-shadow">
+            My Cart
+          </button>
 
-      <ng-template #other_content >
-          <li class="nav-item button-group">
+          <div *ngIf="result1?.message === 'artist' ;then artist else user">ignored</div>
+
+          <ng-template #user>
             <button type="button" class="btn btn-info box-shadow">
-              My Cart
+              My Orders
             </button>
-          
+          </ng-template>
+
+          <ng-template #artist>
             <button type="button" class="btn btn-info box-shadow">
               My Account
             </button>
-          
-            <button type="button" (click)="logout()" class="btn btn-info box-shadow">
-              LogOut
-            </button>
-          </li>
+          </ng-template>
+
+          <button type="button" (click)="logout()" class="btn btn-info box-shadow">
+            LogOut
+          </button>
+        </li>
       </ng-template>
 
     </ul>
@@ -74,7 +80,8 @@
 </nav>
 
 <!-- Modal1 -->
-<div #Modal1 class="modal show" *ngIf="dialogActive"  id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div #Modal1 class="modal show" *ngIf="dialogActive" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
 
@@ -91,7 +98,7 @@
             'text-danger': email.invalid && (email.dirty || email.touched),
             'text-success': email.valid && (email.dirty || email.touched) }">
             <label>Email*</label>
-            <input type="email" class="form-control" formControlName="email" required>
+            <input type="email" maxlength="490" class="form-control" formControlName="email" required>
             <div class="form-control-feedback" *ngIf="email.errors && (email.dirty || email.touched)">
               <p *ngIf="email.errors?.required">Email is required</p>
               <p *ngIf="email.errors.pattern">Follow pattern like abc@pq.xyz(only 2 or 3 letter after .)</p>
@@ -112,7 +119,7 @@
 
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary" [disabled]="!myform.valid">LogIn</button>
-            <button type="button" class="btn btn-secondary" data-toggle="modal" data-dismiss="modal" data-target="#Modal2">New User? SignUp first</button>
+            <button type="button" class="btn btn-secondary" (click)="closeLoginForm()" data-toggle="modal" data-target="#Modal2">New User? SignUp first</button>
           </div>
         </form>
       </div>
@@ -122,43 +129,66 @@
 </div>
 
 <!-- Modal2 -->
-<div class="modal" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+<div #Modal2 class="modal show" *ngIf="dialogActive2" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+
       <div class="modal-header">
         <h5 class="modal-title" id="ModalLabel">Register to Art Gallery</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" (click)="closeSignUpForm()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
       <div class="modal-body">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Full Name(max 200 characters)" aria-label="name">
-        </div>
-        <br>
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Email id" aria-label="email">
-        </div>
-        <br>
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Phone(optional)" aria-label="contact">
-        </div>
-        <br>
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Password" aria-label="password">
-        </div>
+
+        <form [formGroup]="myform2" (ngSubmit)="onSubmit2()" novalidate>
+          <div class="form-group">
+            <label>Full Name*</label>
+            <input type="text" class="form-control" formControlName="name" required>
+            <div class="form-control-feedback" *ngIf="name.errors && (name.dirty || name.touched)">
+              <p *ngIf="name.errors?.required">Name is required</p>
+            </div>
+          </div>
+          <div class="form-group" [ngClass]="{
+                'text-danger': email2.invalid && (email2.dirty || email2.touched),
+                'text-success': email2.valid && (email2.dirty || email2.touched) }">
+            <label>Email Id*</label>
+            <input type="email" class="form-control" formControlName="email2" required>
+            <div class="form-control-feedback" *ngIf="email2.errors && (email2.dirty || email2.touched)">
+              <p *ngIf="email2.errors?.required">Email is required</p>
+              <p *ngIf="email2.errors.pattern">Follow pattern like abc@pq.xyz(only 2 or 3 letter after .)</p>
+            </div>
+          </div>
+          <div class="form-group" [ngClass]="{
+            'text-danger': phone.invalid && (phone.dirty || phone.touched),
+            'text-success': phone.valid && (phone.dirty || phone.touched) }">
+            <label>Phone(optional)</label>
+            <input type="text" class="form-control" formControlName="phone">
+            <p *ngIf="phone.errors.pattern">Only 0-9 numbers are allowed</p>
+          </div>
+          <div class="form-group" [ngClass]="{
+                'text-danger': password2.invalid && (password2.dirty || password2.touched),
+                'text-success': password2.valid && (password2.dirty || password2.touched) }">
+            <label>Password*</label>
+            <input type="password" class="form-control" formControlName="password2" required>
+            <div class="form-control-feedback" *ngIf="password2.touched && password2.errors">
+              Password is required
+            </div>
+          </div>
+          <div class="modal-footer form-group">
+            <label class="custom-control custom-checkbox mr-auto">
+              <input type="checkbox" formControlName="artist" class="custom-control-input form-control">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Are You an Artist?</span>
+            </label>
+            <button type="submit" class="btn btn-primary" [disabled]="!myform2.valid">Submit</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="showLoginForm()">Already User? SignIn</button>
+          </div>
+        </form>
+
       </div>
 
-      <div class="modal-footer">
-        <label class="custom-control custom-checkbox mr-auto">
-          <input type="checkbox" class="custom-control-input">
-          <span class="custom-control-indicator"></span>
-          <span class="custom-control-description">Are You an Artist?</span>
-        </label>
-        <button type="button" class="btn btn-primary">Submit</button>
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-dismiss="modal" data-target="#Modal1">Already User? SignIn</button>
-      </div>
     </div>
   </div>
 </div>
