@@ -16,6 +16,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { SigninComponent } from './signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {HttpClientModule} from '@angular/common/http';
     ToArray,
     FooterComponent,
     LogoutComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule,

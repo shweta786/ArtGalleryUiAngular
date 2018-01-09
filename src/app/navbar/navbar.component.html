@@ -36,10 +36,10 @@
       </li>
 
       <div *ngIf="result?.status === 'invalid' || result?.status === null;then content else other_content">here is ignored</div>
-
       <ng-template #content>
         <li class="nav-item button-group">
-          <button type="button" class="btn btn-info box-shadow" data-toggle="modal" data-target="#Modal1">
+          <button type="button" class="btn btn-info box-shadow" 
+          data-toggle="modal" (click)="showLoginForm()">
             Sign In
           </button>
           <button type="button" class="btn btn-info box-shadow" data-toggle="modal" data-target="#Modal2">
@@ -49,21 +49,22 @@
       </ng-template>
 
       <ng-template #user_content>
-        <li class="nav-item">
-          <a class="nav-link" style="color:white" href="/">My Cart</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" style="color:white" href="/">MyAccount/ MyOrders</a>
-          </li>
       </ng-template>
 
-
-      <ng-template #other_content>
-        <li class="nav-item button-group">
-          <button (click)="logout()" class="btn btn-info box-shadow">
-            LogOut
-          </button>
-        </li>
+      <ng-template #other_content >
+          <li class="nav-item button-group">
+            <button type="button" class="btn btn-info box-shadow">
+              My Cart
+            </button>
+          
+            <button type="button" class="btn btn-info box-shadow">
+              My Account
+            </button>
+          
+            <button type="button" (click)="logout()" class="btn btn-info box-shadow">
+              LogOut
+            </button>
+          </li>
       </ng-template>
 
     </ul>
@@ -73,13 +74,13 @@
 </nav>
 
 <!-- Modal1 -->
-<div class="modal" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div #Modal1 class="modal show" *ngIf="dialogActive"  id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
 
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">SignIn to Art Gallery</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" (click)="closeLoginForm()" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -108,7 +109,6 @@
           <a href="/">
             <u>Forgot Password?</u>
           </a>
-          <!-- <button type="submit" class="btn btn-primary">LogIn</button> -->
 
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary" [disabled]="!myform.valid">LogIn</button>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input  } from '@angular/core';
 import { AuthSessiomService } from '../auth-sessiom.service';
 import { JsonResponse } from '../JsonResponse';
 import { Router } from '@angular/router';
@@ -14,20 +14,34 @@ export class NavbarComponent implements OnInit {
   myform: FormGroup;
   email: FormControl;
   password: FormControl;
+  dialogActive : boolean;
 
   constructor(private authSessiomService: AuthSessiomService, private router: Router) { }
 
-  result: JsonResponse[];
+  result={
+    status:false
+  };
   result1: JsonResponse[];
-  ngOnInit() {
-    this.authSessiomService.getSession().subscribe(
-      result => this.result = result,
-      error => console.log("Error :: " + error)
-    );
 
+  ngOnInit() {
+
+    this.ifSession();
     this.createFormControls();
     this.createForm();
 
+  }
+
+  ifSession() {
+    this.authSessiomService.getSession().subscribe(
+      result => this.result['status'] = result['status'],
+      error => console.log("Error :: " + error)
+    );
+  }
+  showLoginForm(){
+    this.dialogActive= true;
+  }
+  closeLoginForm(){
+    this.dialogActive= false;
   }
 
   createFormControls() { 
@@ -47,12 +61,11 @@ export class NavbarComponent implements OnInit {
       email: this.email,
       password: this.password,
     });
-     console.log("Inside create form" + this.myform.get(['email']));    
   }
 
   logout() {
     this.authSessiomService.logOut().subscribe(
-      result => this.result = result,
+      result => this.result['status'] = result['status'],
       error => console.log("Error :: " + error)
     );
     this.router.navigate(['/logout']);
@@ -62,11 +75,17 @@ export class NavbarComponent implements OnInit {
     if (this.myform.valid) {
       console.log("Form Submitted!");
       this.authSessiomService.logIn(this.myform.value.email, this.myform.value.password).subscribe(
-        result1 => this.result1 = result1,
+        result1 => {this.result1 = result1
+          this.closeLoginForm();
+          this.ifSession();
+          
+        },
         error => console.log("Error ## " + error)
       );
       this.myform.reset();
-      // $("#Modal1").modal("hide");     
+      // this.ngOnInit();
+      // 
+      // this.router.navigate(['/login']);
     }
   }
 
