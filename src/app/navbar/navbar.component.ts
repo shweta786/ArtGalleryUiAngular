@@ -129,6 +129,14 @@ export class NavbarComponent implements OnInit {
 
   onSubmit2() {
     console.log("Form Submitted!");
+    console.log("name----"+ this.myform2.value.name);
+    console.log("mail----"+ this.myform2.value.email2);
+    console.log("contact----"+ this.myform2.value.phone);
+    console.log("pass----"+ this.myform2.value.password2);
+    console.log("artist----"+ this.myform2.value.artist);
+
+    this.myform2.reset();
+    this.closeSignUpForm();
   }
 
 }

@@ -143,11 +143,13 @@
       <div class="modal-body">
 
         <form [formGroup]="myform2" (ngSubmit)="onSubmit2()" novalidate>
-          <div class="form-group">
+          <div class="form-group" [ngClass]="{
+            'text-danger': name.invalid && (name.dirty || name.touched),
+            'text-success': name.valid && (name.dirty || name.touched) }">
             <label>Full Name*</label>
             <input type="text" class="form-control" formControlName="name" required>
             <div class="form-control-feedback" *ngIf="name.errors && (name.dirty || name.touched)">
-              <p *ngIf="name.errors?.required">Name is required</p>
+              <p *ngIf="name.errors.required">Name is required</p>
             </div>
           </div>
           <div class="form-group" [ngClass]="{
@@ -165,7 +167,9 @@
             'text-success': phone.valid && (phone.dirty || phone.touched) }">
             <label>Phone(optional)</label>
             <input type="text" class="form-control" formControlName="phone">
-            <p *ngIf="phone.errors.pattern">Only 0-9 numbers are allowed</p>
+            <div class="form-control-feedback" *ngIf="phone.errors">
+              <p *ngIf="phone.errors.pattern">Only 10(0-9) numbers are allowed</p>
+            </div>
           </div>
           <div class="form-group" [ngClass]="{
                 'text-danger': password2.invalid && (password2.dirty || password2.touched),
@@ -183,7 +187,7 @@
               <span class="custom-control-description">Are You an Artist?</span>
             </label>
             <button type="submit" class="btn btn-primary" [disabled]="!myform2.valid">Submit</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="showLoginForm()">Already User? SignIn</button>
+            <button type="button" class="btn btn-secondary" (click)="closeSignUpForm();showLoginForm()">Already User? SignIn</button>
           </div>
         </form>
 
