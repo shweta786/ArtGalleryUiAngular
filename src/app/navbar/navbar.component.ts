@@ -128,15 +128,30 @@ export class NavbarComponent implements OnInit {
   }
 
   onSubmit2() {
-    console.log("Form Submitted!");
-    console.log("name----"+ this.myform2.value.name);
-    console.log("mail----"+ this.myform2.value.email2);
-    console.log("contact----"+ this.myform2.value.phone);
-    console.log("pass----"+ this.myform2.value.password2);
-    console.log("artist----"+ this.myform2.value.artist);
 
+    if (this.myform2.valid) {
+      this.authSessiomService.signUp(
+        this.myform2.value.name,
+        this.myform2.value.email2,
+        this.myform2.value.phone,
+        this.myform2.value.password2,
+        this.myform2.value.artist).subscribe(
+          result2 => {
+            this.result2 = result2;
+            this.ifSession();
+            if(this.result2["message"] !== "user" && this.result2["message"] !== "artist"){
+              alert(JSON.stringify(this.result2["message"]));
+            } else {
+              alert(JSON.stringify(this.result2["status"]));
+            }
+          },
+          error => console.log("Error @@ "+ error)
+        );
+    }
     this.myform2.reset();
     this.closeSignUpForm();
+    
   }
+
 
 }

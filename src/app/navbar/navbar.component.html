@@ -53,7 +53,7 @@
             My Cart
           </button>
 
-          <div *ngIf="result1?.message === 'artist' ;then artist else user">ignored</div>
+          <div *ngIf="result1?.message === 'artist' || result2?.message === 'artist' ;then artist else user">ignored</div>
 
           <ng-template #user>
             <button type="button" class="btn btn-info box-shadow">
