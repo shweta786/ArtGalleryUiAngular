@@ -47,13 +47,23 @@ export class NavbarComponent implements OnInit {
   }
 
   createFormControls() { 
-    this.email = this.email2 = new FormControl('', [
+    this.email = new FormControl('', [
       Validators.required,
       Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}"),
       
     ]);
 
-    this.password = this.password2 = new FormControl('', [
+    this.password = new FormControl('', [
+      Validators.required
+    ]);
+
+    this.email2 = new FormControl('', [
+      Validators.required,
+      Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}"),
+      
+    ]);
+
+    this.password2 = new FormControl('', [
       Validators.required
     ]);
 
