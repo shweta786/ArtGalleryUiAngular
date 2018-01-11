@@ -4,6 +4,8 @@ import { IndexLayoutComponent } from './index-layout/index-layout.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
+import { ArtistComponent } from './artist/artist.component';
+import { AllArtistComponent } from './all-artist/all-artist.component';
 
 const routes: Routes = [
     { path: '', component: IndexLayoutComponent ,
@@ -13,10 +15,10 @@ const routes: Routes = [
         ]
     },
     { path: 'logout', component: LogoutComponent },
+    { path: 'artist', component: ArtistComponent  },
+    { path: 'allArtist', component: AllArtistComponent },
     // { path: 'login', loadChildren: './login/login.module#LoginModule' },
-    // { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
-    // { path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule' },
-    // { path: '**', redirectTo: 'not-found' }
+    { path: '**', redirectTo: 'IndexLayoutComponent' }
 ];
 
 @NgModule({

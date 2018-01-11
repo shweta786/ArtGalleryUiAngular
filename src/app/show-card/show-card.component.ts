@@ -18,7 +18,7 @@ export class ShowCardComponent implements OnInit {
   ngOnInit() {
     this.paintingService.getAllPainting().subscribe(
       result => {
-      this.paintings = result['paintings'];
+        this.paintings = result['paintings'];
         this.names = result['names'];
       },
       error => console.log("Error :: " + error)

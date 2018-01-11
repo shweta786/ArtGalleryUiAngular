@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+<app-add-carousel [slide1src]="slide1src" [slide2src]="slide2src" [slide3src]="slide3src"></app-add-carousel>
+<br>
+<h3 style="text-align:center;">Artists</h3>
+<div class="card" style="width: 75%;">
+    <div class="row ">
+  
+      <div class="col-sm-4 " *ngFor="let r of usrs; let i=index">
+        <div class="card shadow-effect ">
+          <img class="card-img-top " src="assets/images/{{r.pic}}" alt="Card image cap" style="height:150px">
+          <div class="card-body">
+            <a class="card-title" href="/artist">{{r.name}}</a>
+          </div>
+        </div>
+      </div>
+  
+  
+    </div>
+  </div>

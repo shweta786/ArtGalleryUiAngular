@@ -123,7 +123,6 @@ export class NavbarComponent implements OnInit {
       this.authSessiomService.logIn(this.myform.value.email, this.myform.value.password).subscribe(
         result1 => {
           this.result1 = result1
-          this.closeLoginForm();
           this.ifSession();
           if(this.result1["message"] !== null && this.result1["usr"] === null) {
             alert(JSON.stringify(this.result1["message"]));
@@ -135,6 +134,8 @@ export class NavbarComponent implements OnInit {
       );
     }
     this.myform.reset();
+    this.closeLoginForm();    
+    // this.router.navigate(['/']);
   }
 
   onSubmit2() {
@@ -160,6 +161,7 @@ export class NavbarComponent implements OnInit {
     }
     this.myform2.reset();
     this.closeSignUpForm();
+    // this.router.navigate(['/']);
     
   }
 

@@ -16,6 +16,9 @@ import { LogoutComponent } from './logout/logout.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { ArtistComponent } from './artist/artist.component';
+import { AllArtistComponent } from './all-artist/all-artist.component';
+import { UserServiceService } from './user-service.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,8 @@ import {HttpClientModule} from '@angular/common/http';
     ToArray,
     FooterComponent,
     LogoutComponent,
+    ArtistComponent,
+    AllArtistComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,7 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [paintingService, AuthSessiomService],
+  providers: [paintingService, AuthSessiomService, UserServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

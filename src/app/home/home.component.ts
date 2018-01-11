@@ -8,13 +8,14 @@ import { NavbarComponent } from '../navbar/navbar.component'
 })
 export class HomeComponent implements OnInit {
 
+  public slide1src = "assets/images/Modern-Art-Banner.jpg";
+  public slide2src = "assets/images/Fall Festival Email Header.png";
+  public slide3src = "assets/images/banner1.jpg";
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  public slide1src = "assets/images/Modern-Art-Banner.jpg";
-  public slide2src = "assets/images/Fall Festival Email Header.png";
-  public slide3src = "assets/images/banner1.jpg";
-
+ 
 }
