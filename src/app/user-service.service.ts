@@ -18,6 +18,15 @@ export class UserServiceService {
     .catch(this.handleError);
   }
 
+  getArtistDetail(uid: Number): Observable<JsonResponse[]> {
+    return this.http
+    .get('/ArtGallery/api/artist?uid='+ uid)
+    .map((response: Response) => {
+      return <JsonResponse[]>response.json();
+  })
+    .catch(this.handleError);
+  }
+
   private handleError(error: Response){
     console.error('An error occurred------------- ', error);
     return Observable.throw(error.statusText);
