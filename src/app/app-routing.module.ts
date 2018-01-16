@@ -6,6 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ArtistComponent } from './artist/artist.component';
 import { AllArtistComponent } from './all-artist/all-artist.component';
+import { MyCartComponent } from './my-cart/my-cart.component';
 
 const routes: Routes = [
     { path: '', component: IndexLayoutComponent ,
@@ -15,8 +16,9 @@ const routes: Routes = [
         ]
     },
     { path: 'logout', component: LogoutComponent },
-    { path: 'artist', component: ArtistComponent  },
+    { path: 'artist/:uid', component: ArtistComponent  },
     { path: 'allArtist', component: AllArtistComponent },
+    { path: 'myCart', component: MyCartComponent },
     // { path: 'login', loadChildren: './login/login.module#LoginModule' },
     { path: '**', redirectTo: 'IndexLayoutComponent' }
 ];

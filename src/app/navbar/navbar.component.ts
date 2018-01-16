@@ -165,5 +165,9 @@ export class NavbarComponent implements OnInit {
     
   }
 
+  goToCart() {
+    this.router.navigate(['/myCart']);
+  }
+
 
 }

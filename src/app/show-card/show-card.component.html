@@ -6,16 +6,18 @@
         <img class="card-img-top " src="assets/images/{{r.thumbnail_add}}" alt="Card image cap" style="height:150px">
         <div class="card-body">
           <h4 class="card-title">{{r.name}}</h4>
-          <p class="card-text"><b>Type:</b>{{r.type}}
-            <br><b>Size:</b> {{r.sze}} px
-            <br><b>By:</b> <a href="/artist?uid={{r.user_id}}"> {{names[i]}} </a>
+          <p class="card-text">
+            <b>Type:</b>{{r.type}}
+            <br>
+            <b>Size:</b> {{r.sze}} px
+            <br>
+            <b>By:</b>
+            <a [routerLink]="['/artist', r.user_id ]"> {{names[i]}} </a>
           </p>
-      
-          <a href="#" class="btn btn-primary">+ Add To Cart</a>
+          <a (click)="addCart(r.painting_id)" class="btn btn-primary">+to Cart</a>
         </div>
       </div>
     </div>
-
 
   </div>
 </div>

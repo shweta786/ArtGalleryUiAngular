@@ -19,6 +19,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { ArtistComponent } from './artist/artist.component';
 import { AllArtistComponent } from './all-artist/all-artist.component';
 import { UserServiceService } from './user-service.service';
+import { MyCartComponent } from './my-cart/my-cart.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { UserServiceService } from './user-service.service';
     LogoutComponent,
     ArtistComponent,
     AllArtistComponent,
+    MyCartComponent,
   ],
   imports: [
     BrowserModule,

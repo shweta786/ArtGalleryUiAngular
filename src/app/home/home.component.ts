@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component'
 
 @Component({
@@ -14,7 +14,12 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
+  @Input() message = "";
+
   ngOnInit() {
+    // if(this.message != "") {
+    //   alert(this.message);      
+    // }
   }
 
  
