@@ -27,6 +27,15 @@ export class paintingService {
     .catch(this.handleError);
   }
 
+  sortPainting(criteria: String): Observable<JsonResponse> {
+    return this.http
+    .get('/ArtGallery/api/sortPaint?criteria='+ criteria)
+    .map((response: Response) => {
+      return <JsonResponse[]>response.json();
+  })
+    .catch(this.handleError);
+  }
+
   private handleError(error: Response){
     console.error('An error occurred------------- ', error);
     return Observable.throw(error.statusText);

@@ -15,6 +15,7 @@ export class MyCartComponent implements OnInit {
   paintings = [];
   names = [];
   msg = "";
+  msg2= "";
   c = 0;
   total = 0;
 
@@ -55,6 +56,21 @@ export class MyCartComponent implements OnInit {
           alert("error occured");
           this.router.navigate(['/']);
         }
+      },
+      error => console.log("Error :: " + error)
+    );
+  }
+
+  confirm () {
+    this.userService.confirmOrder().subscribe(
+      result => {
+        this.msg2 = result['message'];
+        if(this.msg2 === "ok") {
+          alert("Your order is successful, check your mail");
+        } else {
+          alert("error occured");
+        }
+        this.router.navigate(['/']);        
       },
       error => console.log("Error :: " + error)
     );
