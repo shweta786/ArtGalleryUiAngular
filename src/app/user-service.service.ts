@@ -36,6 +36,15 @@ export class UserServiceService {
     .catch(this.handleError);
   }
 
+  removeCart(pid: number): Observable<JsonResponse[]> {
+    return this.http
+    .get('/ArtGallery/api/delete?pid='+pid)
+    .map((response: Response) => {
+      return <JsonResponse[]>response.json();
+  })
+    .catch(this.handleError);
+  }
+
   private handleError(error: Response){
     console.error('An error occurred------------- ', error);
     return Observable.throw(error.statusText);

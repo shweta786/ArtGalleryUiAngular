@@ -15,6 +15,8 @@ export class MyCartComponent implements OnInit {
   paintings = [];
   names = [];
   msg = "";
+  c = 0;
+  total = 0;
 
   ngOnInit() {
 
@@ -29,11 +31,33 @@ export class MyCartComponent implements OnInit {
         } else {
           if(this.paintings.length <= 0)
             this.msg = "empty";
+          else {
+            for(let i=0; i<this.paintings.length; i++) {
+              this.c = this.c + 1;
+              this.total = this.total + Number(this.paintings[i].price);
+            }
+          }
         }
       },
       error => console.log("Error :: " + error)
-    )    
+    );   
    
+  }
+
+  removeFromCart(pid: number) {
+    this.userService.removeCart(pid).subscribe(
+      result => {
+        this.msg = result['message'];
+        if(this.msg === "ok") {
+          alert("successfully removed from cart");
+          window.location.reload();
+        } else {
+          alert("error occured");
+          this.router.navigate(['/']);
+        }
+      },
+      error => console.log("Error :: " + error)
+    );
   }
 
 }

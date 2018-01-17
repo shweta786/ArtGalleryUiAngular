@@ -28,29 +28,39 @@
 <ng-template #other_content>
     <div style="display: flex;">
 
-        <div class="container row" style="flex: 1">
+        <div class="container row" style="flex: 3;">
             <div class="card shadow-effect">
                 <div class="row" *ngFor="let r of paintings; let i=index">
                     <div class="col s12">
-                        <div class="card shadow-effect ">
-                            <img class="card-img-top " src="assets/images/{{r.thumbnail_add}}" alt="Card image cap" style="height:150px">
+                        <div class="card shadow-effect">
+                            <img class="card-img-top" src="assets/images/{{r.thumbnail_add}}" alt="Card image cap" style="height:150px">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-7">
-                                        <h4 class="card-title">{{r.name}}</h4>                                
+                                    <div class="col-md-8">
+                                        <h4 class="card-title">{{r.name}}</h4>
                                     </div>
-                                    <div class="col-md-5">
-                                        <h4 class="card-title">price:- {{r.price}}Rs/-</h4> 
+                                    <div class="col-md-4">
+                                        <h4 class="card-title" style="color:lightskyblue">price:- {{r.price}}Rs/-</h4>
                                     </div>
                                 </div>
-                                <p class="card-text">
-                                    <b>Type:</b>{{r.type}}
-                                    <br>
-                                    <b>Size:</b> {{r.sze}} px
-                                    <br>
-                                    <b>By:</b>
-                                    <a [routerLink]="['/artist', r.user_id ]"> {{names[i]}} </a>
-                                </p>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <p class="card-text">
+                                            <b>Type:</b>{{r.type}}
+                                            <br>
+                                            <b>Size:</b> {{r.sze}} px
+                                            <br>
+                                            <b>By:</b>
+                                            <a [routerLink]="['/artist', r.user_id ]"> {{names[i]}} </a>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a (click)="removeFromCart(orders[i].order_id)" class="btn btn-primary">
+                                            remove
+                                        </a>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -58,7 +68,31 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" style="flex:1.5; padding-left:10px;">
+            <div class="container py-3">
+                <div class="card shadow-effect">
+                    <div class="row ">
+                        <div class="card-block px-3">
+                            <h4 class="card-title" style="text-align:center;">Price Details</h4>
+                            <p class="card-text">
+                                Total Item:  {{c}}
+                            </p>
+                            <p class="card-text">
+                                Total Price:  {{total}}
+                            </p>
+                            <p class="card-text">
+                                Shipping Charges: Free
+                            </p>
+                            <p class="line"></p>
+                            <br>
+                            <p class="card-text">
+                                Amount To Pay:  {{total}}
+                            </p>
+                            <a href="#" class="btn btn-primary">Proceed to Confirm Order</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
