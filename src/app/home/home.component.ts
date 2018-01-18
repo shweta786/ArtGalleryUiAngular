@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
         this.paintings = result['paintings'];  
         this.status = result['status'];      
       },
-      error => console.log("Error :: " + error)
+      error => console.log("Error " + error)
     );
   }
 
